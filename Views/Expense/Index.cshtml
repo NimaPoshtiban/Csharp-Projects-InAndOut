@@ -1,7 +1,50 @@
-﻿
+﻿@model IEnumerable<InAndOut.Models.Expense>
 @{
     ViewData["Title"] = "My Expenses";
 }
 
-<h1>My Expenses</h1>
+
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Expenses List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="Expense">Add New Expense</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Expense name</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td width="30%">@item.ExpenseName</td>
+                        <td width="30%">$@item.Amount</td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="bg-info text-white font-weight-bold" width="30%">Total Expenses:</td>
+                    <td class="bg-info text-center text-white font-weight-bolder" width="70%">@Model.Count()</td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+    else
+    {
+        <h3 class="text-info">No Items Created yet...</h3>
+    }
+
+</div>
 
