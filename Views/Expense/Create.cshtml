@@ -5,38 +5,49 @@
 
 
 <form method="post" asp-action="Create">
-    <div class="form-group row">
-        <h2 class="text-black-50 pl-3">Add Expense</h2>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <div class="form-group row">
-                <div class="col-6">
-                    <label asp-for="ExpenseName"></label>
-                </div>
-                <div class="col-6">
-                    <label asp-for="Amount"></label>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-6">
-                    <input class="form-control" asp-for="ExpenseName" />
-                </div>
-                <div class="col-6">
-                    <input class="form-control" asp-for="Amount" />
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-8 text-center row offset-2">
-                    <div class="col">
-                        <input class="w-75 btn btn-primary" type="submit" name="submit" value="Create" />
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group row">
+            <h2 class="text-black-50 pl-3">Add Expense</h2>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group row">
+                    <div class="col-6">
+                        <label asp-for="ExpenseName"></label>
                     </div>
-                    <div class="col">
-                        <a class="btn btn-danger text-white w-75" asp-controller="Expense" asp-action="Index">Go Back</a>
+                    <div class="col-6">
+                        <label asp-for="Amount"></label>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-6">
+                        <input class="form-control" asp-for="ExpenseName" />
+                        <span asp-validation-for="ExpenseName" class="text-danger"></span>
+                    </div>
+                    <div class="col-6">
+                        <input class="form-control" asp-for="Amount" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="col-8 text-center row offset-2">
+                        <div class="col">
+                            <input class="w-75 btn btn-primary" type="submit" name="submit" value="Create" />
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-danger text-white w-75" asp-controller="Expense" asp-action="Index">Go Back</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </form>
+
+@section Scripts{
+    @{ 
+        <partial name="_ValidationScriptsPartial"/>
+    }
+ }
 

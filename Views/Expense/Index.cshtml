@@ -36,7 +36,7 @@
             <tfoot>
                 <tr>
                     <td class="bg-info text-white font-weight-bold" width="30%">Total Expenses:</td>
-                    <td class="bg-info text-center text-white font-weight-bolder" width="70%">@Model.Count()</td>
+                    <td class="bg-info text-center text-white font-weight-bolder" width="70%">$@Model.Sum(s=>s.Amount)</td>
                 </tr>
             </tfoot>
         </table>
