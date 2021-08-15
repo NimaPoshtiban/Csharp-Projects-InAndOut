@@ -1,0 +1,54 @@
+﻿@model IEnumerable<InAndOut.Models.ExpenseType>
+@{
+    ViewData["Title"] = "My Expenses Types";
+}
+
+
+<div class="container p-3">
+    <div class="row p-4">
+        <div class="col-6">
+            <h2 class="text-primary">Expense Types List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a class="btn btn-primary" asp-action="Create" asp-controller="ExpenseType">Add New Expense Type</a>
+        </div>
+    </div>
+    <br />
+
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>Expense Type Name</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.Name</td>
+                        <td>
+                            <div class="col-6 btn-group" role="group">
+                                <a class="btn btn-primary mx-1" asp-route-Id="@item.Id" asp-action="Update" asp-controller="Expense">Update</a>
+                                <a class="btn btn-danger mx-1" asp-route-Id="@item.Id" asp-action="Delete" asp-controller="Expense">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td class="bg-info text-white font-weight-bold">Total Expenses Types:</td>
+                    <td class="bg-info text-center text-white font-weight-bolder" width="70%">@Model.Count()</td>
+                </tr>
+            </tfoot>
+        </table>
+    }
+    else
+    {
+        <h3 class="text-info">No Types Created yet...</h3>
+    }
+
+</div>
+
